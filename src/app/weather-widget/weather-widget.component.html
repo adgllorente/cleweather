@@ -1,0 +1,44 @@
+<div class="cleweather-weather-widget cleweather-weather-widget--effect">
+  <div class="cleweather-weather-widget-info">
+    <h1 class="cleweather-weather-widget-info--title">{{weatherInfo.locationName}}</h1>
+    <p class="cleweather-weather-widget-info--temperature">
+      <i class="fa" [ngClass]="{
+          'fa-umbrella': weatherInfo.isRaining,
+          'fa-sun-o': weatherInfo.isSunny,
+          'fa-level-up': weatherInfo.isWindy,
+          'fa-cloud': weatherInfo.isCloudy,
+          'fa-snowflake-o': weatherInfo.isSnowing,
+          'fa-bars': weatherInfo.isFoggy
+        }" aria-hidden="true"></i>
+      {{weatherInfo.temperature || '-'}}
+    </p>
+    <div class="cleweather-weather-widget-info--details">
+      <div class="cleweather-weather-widget-info--detail">
+        <i class="fa fa-level-up" aria-hidden="true"></i>
+        <span>{{weatherInfo.windSpeed || '-'}} {{weatherInfo.windDirection}}</span>
+      </div>
+      <div class="cleweather-weather-widget-info--detail">
+        <i class="fa fa-umbrella" aria-hidden="true"></i>
+        <span>{{weatherInfo.humidity}}%</span>
+      </div>
+    </div>
+    <div class="cleweather-weather-widget-info--details">
+      <div class="cleweather-weather-widget-info--detail">
+        <i class="fa fa-thermometer-empty" aria-hidden="true"></i>
+        <span>{{weatherInfo.temperatureMin}} min</span>
+      </div>
+      <div class="cleweather-weather-widget-info--detail">
+        <i class="fa fa-thermometer-full" aria-hidden="true"></i>
+        <span>{{weatherInfo.temperatureMax}} max</span>
+      </div>
+    </div>
+    <a *ngIf="weatherInfo.moreInfo"
+        [href]="weatherInfo.moreInfo"
+        target="_blank"
+        class="cleweather-weather-widget-info--more fa fa-info">
+    </a>
+  </div>
+  <div class="cleweather-weather-widget-timer">
+    <p class="cleweather-weather-widget-timer--time">{{time}}</p>
+  </div>
+</div>
